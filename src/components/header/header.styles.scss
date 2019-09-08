@@ -1,0 +1,77 @@
+
+// $primary-color: #2196F3;
+$primary-color:#1E88E5;
+$secondary-color: #f1e040;
+.header{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    background-color: #fff;
+    .logo-container{
+        height: 100%;
+        width: 70px;
+        .logo{
+            width: 50px;
+            height: 100%;
+        }
+    }
+   
+    .nav-container{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .header-sign-in {
+            padding: 10px 15px;
+            border: 1px solid $primary-color;
+            background-color: $primary-color;
+            color: white;
+            top: 0px;
+            
+            &:hover{
+                background-color: $secondary-color;
+                color: $primary-color;
+                font-weight: 500;
+                
+            }
+        }
+
+        .user-menu{
+           padding: 10px 15px;
+            color: #42a5f5;
+            cursor: pointer;
+
+            .user-icon{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+$breakpoint-tablet: 1024px;
+$standard-desktop: 1440px;
+$large-desktop: 2560px;
+
+@media (min-width: $large-desktop ) {
+    .header{
+        height: 70px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+        background-color: #fff;
+        .logo-container{
+            height: 100%;
+            width: 70px;
+            .logo{
+                width: 100px;
+                height: 200%;
+            }
+        }
+    }
+}
+
+

@@ -1,0 +1,20 @@
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDKsu6X0un0kaOiHXtFH-_YEIx6gzvz-ts",
+    authDomain: "to-the-table.firebaseapp.com",
+    databaseURL: "https://to-the-table.firebaseio.com",
+    projectId: "to-the-table",
+    storageBucket: "",
+    messagingSenderId: "932030831173",
+    appId: "1:932030831173:web:0e8493e22bbda3a4b8612c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>

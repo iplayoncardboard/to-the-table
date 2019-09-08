@@ -1,0 +1,17 @@
+<svg width="450" height="450" version="1.1" viewBox="0 0 119.06 119.06" xmlns="http://www.w3.org/2000/svg">
+ <title>logo-plain</title>
+ <g transform="translate(0 -177.94)">
+  <flowRoot transform="matrix(.26458 0 0 .26458 0 164.71)" fill="#000000" font-family="sans-serif" font-size="21.333px" letter-spacing="0px" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><flowRegion><rect x="170.72" y="270.7" width="2.0203" height="32.325"/></flowRegion><flowPara/></flowRoot>
+  <flowRoot transform="matrix(.26458 0 0 .26458 0 164.71)" fill="#000000" font-family="sans-serif" font-size="21.333px" letter-spacing="0px" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><flowRegion><rect x="-89.904" y="82.807" width="49.497" height="30.305"/></flowRegion><flowPara/></flowRoot>
+  <g transform="translate(-6.3607 12.692)" fill="none" stroke-width=".13229">
+   <path d="m10.782 208.87 7.8287-18.523h93.945l7.8287 18.523z" stroke="#000"/>
+   <rect x="10.65" y="209.42" width="109.87" height="2.5121" stroke="#030000" stroke-linejoin="round"/>
+  </g>
+  <g fill="#000000" font-family="sans-serif" font-size="31.526px" letter-spacing="0px" stroke-width="1.4778" word-spacing="0px">
+   <text transform="scale(1.3501 .7407)" x="4.0394292" y="329.45496" style="line-height:1.25" xml:space="preserve"><tspan x="4.0394292" y="329.45496" stroke-width="1.4778">To</tspan></text>
+   <text transform="scale(1.3501 .7407)" x="4.4126401" y="359.68375" style="line-height:1.25" xml:space="preserve"><tspan x="4.4126401" y="359.68375" stroke-width="1.4778">The</tspan></text>
+   <text transform="scale(1.3501 .7407)" x="4.0394263" y="389.53943" style="line-height:1.25" xml:space="preserve"><tspan x="4.0394263" y="389.53943" stroke-width="1.4778">Table</tspan></text>
+  </g>
+  <flowRoot fill="black" font-family="sans-serif" font-size="21.333px" letter-spacing="0px" word-spacing="0px" style="line-height:1.25" xml:space="preserve"><flowRegion><rect x="194.96" y="237.87" width="569.73" height="23.234"/></flowRegion><flowPara/></flowRoot>
+ </g>
+</svg>

@@ -1,0 +1,103 @@
+$primary-color:#1E88E5;
+
+.feature-container{
+    margin-bottom: 25px;
+    .image{
+        background-size: cover;
+        // background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        flex-direction: column;
+        min-height: 400px;
+        border-radius: .5rem;
+        
+        .title{
+            width: 45%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 5rem;
+            margin: 15px auto;
+            background-color: rgba($color: #ffffff, $alpha: .75);
+            text-shadow: 2px 2px $primary-color;
+        }
+        .description-container{
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px;
+            .feature-description{
+                overflow-wrap: break-word;
+                flex-direction: row;
+                background-color: rgba($color: #ffffff, $alpha: .75);
+                margin: 0 10px;
+                text-align: center;
+                font-size: 3rem;
+            }
+        }
+       
+    }
+    
+}
+
+.rounded{
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+$breakpoint-tablet: 1024px;
+$standard-desktop: 1440px;
+$large-desktop: 2560px;
+
+@media (min-width: $large-desktop ) {
+    .feature-container{
+        
+        .image{
+            min-height: 500px;
+            
+            .title{
+                font-size: 7rem;
+                
+            }
+            .description-container{
+                margin-top: 35px;
+                .feature-description{
+                    font-size: 4.5rem;
+                }
+            }
+           
+        } 
+    }
+    .rounded{
+        border-radius: 1rem;
+        padding: 5px;
+    }
+}
+
+@media (max-width: $breakpoint-tablet) {
+    .feature-container{
+        margin-bottom: 25px;
+        .image{
+            min-height: 200px;
+            background-attachment: scroll;
+            
+            .title{
+                font-size: 2.5rem;
+                margin: 10px auto;
+                text-shadow: none;
+            }
+            .description-container{
+                display: flex;
+                justify-content: space-around;
+                margin-bottom: 15px;
+                .feature-description{
+                    font-size: 1.5rem;
+                }
+            }
+           
+        } 
+    }
+    .rounded{
+        border-radius: 1rem;
+        padding: 5px;
+    }
+}
