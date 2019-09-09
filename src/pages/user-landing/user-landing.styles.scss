@@ -1,0 +1,13 @@
+.user-landing {
+    
+    background-color: lightgrey;
+    padding: 0 60px;
+    height: 100%;
+    .collection-container {
+        display: flex;
+        flex-direction: row;
+        flex-flow: row wrap;
+        width: 100%;
+    }
+    
+}

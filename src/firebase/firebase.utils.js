@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 import "firebase/auth";
 import "firebase/firestore";
-import { async } from 'q';
 
 //Firebase Config and Initializtion
 const config = {

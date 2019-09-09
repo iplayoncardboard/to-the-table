@@ -1,0 +1,12 @@
+.event-preview{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    border: 1px solid black;
+    margin:10px 10px;
+    padding: 10px;
+
+    .info-header{
+        font-weight: 700;
+    }
+}
