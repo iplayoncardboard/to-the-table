@@ -1,7 +1,7 @@
 .event-preview{
     display: flex;
     flex-direction: column;
-    min-width: 400px;
+    width: 100%;
     border: 1px solid black;
     margin:10px 10px;
     padding: 10px;
@@ -9,4 +9,30 @@
     .info-header{
         font-weight: 700;
     }
+    .game-container{
+        display: flex;
+        flex-direction: row;
+        flex-flow: wrap;
+        .game-title{
+            font-size: 1em;
+            font-weight: bold
+        }
+        .game-image-container{
+            width: 25%;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+$breakpoint-tablet: 1024px;
+$standard-desktop: 1440px;
+$large-desktop: 2560px;
+
+@media (min-width: $breakpoint-tablet ) {
+    .event-preview{
+        width: 45%;
+ }
 }

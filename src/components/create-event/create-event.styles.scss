@@ -1,0 +1,26 @@
+$primary-color:#1E88E5;
+$secondary-color: lightgrey;
+
+.create-event-button{
+    display: inline;
+    position: sticky;
+    top: 90%;
+    left: 95%;
+    background-color: $primary-color;
+    color:$secondary-color;
+    padding: 13px;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    box-shadow: 2px 4px 5px 0px #5b5b5c;
+    cursor: pointer;
+  &:hover{
+    background-color: $secondary-color;
+    color:$primary-color;
+    
+  }
+}
+
+$breakpoint-tablet: 1024px;
+$standard-desktop: 1440px;
+$large-desktop: 2560px;

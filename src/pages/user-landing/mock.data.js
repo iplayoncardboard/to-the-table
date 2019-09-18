@@ -13,7 +13,18 @@ const EVENT_DATA = [
             zip: '85339'
         },
         attendees:['Jason', 'Cassie'],
-        games: ['Catan', 'Edge of Darkness']
+        games: [
+            {name:'Catan',
+            imageUrl: 'https://cf.geekdo-images.com/itemrep/img/aozRplCSOpRucLxSuClX2odEUBQ=/fit-in/246x300/pic2419375.jpg'
+            }, 
+            {name:'Edge of Darkness',
+            imageUrl:'https://cf.geekdo-images.com/itemrep/img/78tzoi0wN6IxfxJLqg4tuwt3hRk=/fit-in/246x300/pic3691121.jpg'
+            },
+            {
+                name: "Sagrada",
+                imageUrl:"https://cf.geekdo-images.com/itemrep/img/N_qhXyarR58U2An3A00Kgcs89IQ=/fit-in/246x300/pic3525224.jpg"
+            }
+        ]
     },
     {     id:2,
         title:'Birthday Game Night',

@@ -9,15 +9,18 @@ const EventPrevew = ({title, date, games, attendees}) => (
                 <p><span className='info-header'>Date: </span><span className='info'>{date.date}</span></p>
                 <p><span className='info-header'>Location: </span><span className='info'>{date.time}</span></p>
             </div>
-            <div className='game-container'>
+            
                 {
                 games.map((game, index)=>(
-                    <div className='game' key={index}>
-                        {game}
+                    <div className='game-container' key={index}>
+                        <div className='game-title'>{game.name}</div>
+                        <div className='game-image-container'> 
+                            <img className='game-image' alt='game' src={game.imageUrl} />
+                        </div>
                     </div>
                     ))
                 }
-            </div>
+            
         
             <div className='attendee-container'>
                 {
@@ -33,3 +36,5 @@ const EventPrevew = ({title, date, games, attendees}) => (
 
 
 export default EventPrevew
+
+

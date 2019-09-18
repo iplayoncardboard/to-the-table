@@ -6,7 +6,6 @@ $secondary-color: lightgrey;
     display: flex;
     flex-direction: column;
     background-color: lightgrey;
-    padding: 0 60px;
     height: 100%;
     
     .get-started{
@@ -27,13 +26,13 @@ $secondary-color: lightgrey;
 
 }
 
-
 $breakpoint-tablet: 1024px;
 $standard-desktop: 1440px;
 $large-desktop: 2560px;
 
-@media (min-width: $large-desktop ) {
+@media (min-width: $standard-desktop) {
     .homepage{
+        padding: 0 60px;
         .get-started{
             width: 215px;
             font-size: 2rem;

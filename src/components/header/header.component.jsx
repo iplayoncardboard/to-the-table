@@ -17,7 +17,6 @@ const Header = ({currentUser, hidden}) => (
             <Logo className='logo' />
         </Link>
         <div className='nav-container'>
-            {console.log('HDR',currentUser)}
             {
                 currentUser ? 
                 <div className='header-sign-in' onClick={() => auth.signOut()}>SIGN OUT</div> :
