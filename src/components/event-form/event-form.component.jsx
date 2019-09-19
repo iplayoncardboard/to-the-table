@@ -1,8 +1,10 @@
 import React from 'react';
 import './event-form.styles.scss'
 import {connect} from 'react-redux';
-import {toggleEventHidden} from '../../redux/events/events.actions';
-
+import {createStructuredSelector} from 'reselect'
+import {selectEventHidden} from '../../redux/events/events.selector'
+import {toggleCreateEventHidden} from '../../redux/events/events.actions';
+import {withRouter} from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
@@ -20,9 +22,11 @@ class EventForm extends React.Component{
             games:[],
             attendees:[]
         }
+
+        
     }
 
-    
+
     handleSubmit = (event) =>{
         event.preventDefault();
 
@@ -33,8 +37,22 @@ class EventForm extends React.Component{
         this.setState({[name]: value})
     }
 
-    cancelEventCreation = ()=> {
-        this.props.dispatch(toggleEventHidden)
+    eventCancelation = ()=> {
+        if(this.eventHidden){
+            this.props.toggleCreateEventHidden();
+        }
+        this.props.history.push('/')
+    }
+
+    eventSave= ()=> {
+        this.props.toggleCreateEventHidden();
+    }
+
+    componentDidMount(){
+        if(!this.eventHidden){
+            this.props.toggleCreateEventHidden()
+        }
+        console.log(this.props.eventHidden);
     }
     
    render(){
@@ -48,12 +66,20 @@ class EventForm extends React.Component{
                 <FormInput className='zip form-input' label='zip' handleChange={this.handleChange} value={this.state.zip} name='zip'/>
                 <CustomButton className='custom-button add-game'>Add Game</CustomButton>
                 <CustomButton className='custom-button add-person'>Add Person</CustomButton>
-                <CustomButton className='custom-button save'>Save</CustomButton>
-                <CustomButton className='custom-button cancel' handleClick={this.cancelEventCreation}>Cancel</CustomButton> 
+                <CustomButton className='custom-button save' handleClick={this.eventSave}>Save</CustomButton>
+                <CustomButton className='custom-button cancel' handleClick={this.eventCancelation}>Cancel</CustomButton> 
             </form>
         </div>
     )
    } 
     
 }
-export default connect(null)(EventForm);
+
+const mapStateToProps = createStructuredSelector({
+    eventHidden: selectEventHidden
+});
+
+const mapDispatchToProps = dispatch => ({
+    toggleCreateEventHidden: event => dispatch(toggleCreateEventHidden())
+})
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(EventForm));

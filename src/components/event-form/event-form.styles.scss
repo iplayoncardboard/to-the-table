@@ -1,0 +1,15 @@
+$primary-color:#1E88E5;
+$secondary-color: #f1e040;
+
+
+.form-input{ 
+    position: relative;
+    width:20%;
+    
+    &.name{
+        background-color: red;
+        position: relative;
+    width:20%;
+    }
+}   
+

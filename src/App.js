@@ -46,14 +46,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header currentUser={this.props.currenUser}></Header>
-        {this.props.eventHiddden ? <CreateEvent/> : null}
-       {this.props.eventHiddden ? null : <Event className='.new-event-form'/>}
+        {this.props.eventHiddden ? null: <CreateEvent/> }
+       {/* {this.props.eventHiddden ? null : <Event className='.new-event-form'/>} */}
         <Switch>
           <Route exact path='/' render={()=> this.props.currentUser ? (<Redirect to={{
-            pathname:`/${this.props.currentUser.id}`
+            pathname:`/${this.props.currentUser.id}/landing`
           }} />):(<HomePage />)} />
           <Route exact path='/signIn' render={() => this.props.currentUser ? (<Redirect to='/' />): (<SignInAndSignUp/>)} />
-          <Route path='/:user' render={()=> this.props.currentUser ? (<UserLanding />):(<HomePage />)} />
+          
+          <Route exact path='/NewEvent' component={Event} />
+          <Route exact path={`/:user/landing`} render={()=> this.props.currentUser ? (<UserLanding />):(<HomePage />)} />
         </Switch>
       </div>
     );

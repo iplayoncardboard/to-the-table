@@ -1,17 +1,12 @@
 .event-form{
+    position: relative;
     width: 80%;
+    background-color: bisque;  
+    margin: 10px auto; 
     
-    & .form-input{ 
-        width:20%;
-        
-    }   
-
-    & .name{
-        background-color: red;
-    }
+}    
 
 
-}
 
 
 

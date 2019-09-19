@@ -20,7 +20,7 @@ const eventsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 currentEvent: action.payload
             })
-            case GuideActionTypes.TOGGLE_EVENT_HIDDEN:
+            case GuideActionTypes.TOGGLE_CREATE_EVENT_HIDDEN:
                     return({
                         ...state,
                         hidden: !state.hidden

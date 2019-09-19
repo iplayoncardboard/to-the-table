@@ -4,18 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CustomButton from '../custom-button/custom-button.component';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {connect} from 'react-redux';
-import {toggleEventHidden} from '../../redux/events/events.actions'
+import {Link} from 'react-router-dom';
 
 const CreateEvent = ({dispatch}, ...otherProps) => {
     
-    const openEventPage = (event) => {
-        dispatch(toggleEventHidden)
-    }
+   
     
     return(
-    <CustomButton className='create-event-button' handleClick={openEventPage}>                
+     <Link to='/NewEvent'>
+    <CustomButton className='create-event-button' >                
         <FontAwesomeIcon className='add-icon'  icon={faPlus} size='1x' />
     </CustomButton>
+    </Link> 
 )}
 
 

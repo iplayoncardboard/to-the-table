@@ -14,6 +14,8 @@ export const setCurrentEvent = event => {
     });
 }
 
-export const toggleEventHidden = {
-        type: GuideActionTypes.TOGGLE_EVENT_HIDDEN
+export const toggleCreateEventHidden = ()=>{
+        return (
+            {type: GuideActionTypes.TOGGLE_CREATE_EVENT_HIDDEN
+        });
     }
