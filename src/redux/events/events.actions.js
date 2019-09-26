@@ -8,6 +8,13 @@ export const setCurrentEvent = event => {
     });
 }
 
+export const togglePrivateEvent = event => {
+    return({
+        type: GuideActionTypes.TOGGLE_PRIVATE_EVENT,
+        payload: event
+    })
+}
+
 export const toggleCreateEventHidden = ()=>{
         return (
             {type: GuideActionTypes.TOGGLE_CREATE_EVENT_HIDDEN

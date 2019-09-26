@@ -4,8 +4,8 @@ import {createStructuredSelector} from 'reselect'
 import './user-landing.styles.scss'
 
 import { selectCurrentUser } from '../../redux/user/user.selector';
-import {selectAllEvents, selectCurrentEvent} from '../../redux/events/events.selector'
-import EventPrevew from '../../components/event-preview/event-preview.component';
+import {selectAllEvents} from '../../redux/events/events.selector'
+import EventPreview from '../../components/event-preview/event-preview.component';
 
 class UserLanding extends React.Component{ 
     
@@ -20,8 +20,8 @@ render(){
         <h2>My Events</h2>
         <div className='collection-container'>
         {
-            events.map(({id, ...otherProps})=>(
-                <EventPrevew key={id} {...otherProps}/>))
+            events.map((props)=>(
+                <EventPreview key={props.id} {...props}/>))
         }
         </div>
 
@@ -29,7 +29,7 @@ render(){
         <div className='collection-container'>
         {
             this.props.events.map(({id, ...otherProps})=>(
-                <EventPrevew key={id} {...otherProps}/>))
+                <EventPreview key={id} {...otherProps}/>))
         }
         </div>
     </div>)}
@@ -38,7 +38,6 @@ render(){
 
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser,
-    currentEvent: selectCurrentEvent,
     events: selectAllEvents
 })
 
