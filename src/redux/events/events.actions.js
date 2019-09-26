@@ -1,11 +1,5 @@
 import {GuideActionTypes} from './events.types'
 
-export const setEvents = events =>{
-    return ({
-        type: GuideActionTypes.SET_EVENTS,
-        payload: events
-    });
-}
 
 export const setCurrentEvent = event => {
     return({

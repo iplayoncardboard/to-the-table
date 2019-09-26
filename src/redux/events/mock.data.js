@@ -1,7 +1,8 @@
-const EVENT_DATA = [
-    {
+const EVENT_DATA = {
+    1: {
         id:1,
         title:'Awesome Game Night',
+        privateEvent: true,
         date: {
             date:'10/06/2019',
             time: '7:00 PM'
@@ -13,7 +14,7 @@ const EVENT_DATA = [
             zip: '85339'
         },
         attendees:['Jason', 'Cassie'],
-        games: [
+        gamesIds: [
             {name:'Catan',
             imageUrl: 'https://cf.geekdo-images.com/itemrep/img/aozRplCSOpRucLxSuClX2odEUBQ=/fit-in/246x300/pic2419375.jpg'
             }, 
@@ -26,8 +27,9 @@ const EVENT_DATA = [
             }
         ]
     },
-    {     id:2,
+    2: {     id:2,
         title:'Birthday Game Night',
+        privateEvent: true,
         date: {
             date:'09/30/2019',
             time: '7:00 PM'
@@ -39,8 +41,10 @@ const EVENT_DATA = [
             zip: '85339'
         },
         attendees:[],
-        games: []},
-    {     id:3,
+        gamesIds: []},
+    3: {     
+        id:3,
+        privateEvent: false,
         title:'Spooky Game Night',
         date: {
             date:'10/31/2019',
@@ -53,8 +57,9 @@ const EVENT_DATA = [
             zip: '85339'
         },
         attendees:[],
-        games: []},
-    {     id:4,
+        gamesIds: []},
+    4:{     id:4,
+        privateEvent: false,
         title:'Regular Game Night',
         date: {
             date:'11/06/2019',
@@ -67,8 +72,9 @@ const EVENT_DATA = [
             zip: '85339'
         },
         attendees:[],
-        games: []},
-    {     id:5,
+        gamesIds: []},
+    5:{     id:5,
+        privateEvent: true,
         title:'Camping Game Night',
         date: {
             date:'11/12/2019',
@@ -81,7 +87,7 @@ const EVENT_DATA = [
             zip: '85222'
         },
         attendees:[],
-        games: []}
-];
+        gamesIds: []}
+    };
 
 export default EVENT_DATA;

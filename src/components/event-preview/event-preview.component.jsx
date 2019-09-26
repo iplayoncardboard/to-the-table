@@ -1,26 +1,22 @@
 import React from 'react'
 import './event-preview.styles.scss'
-
-
-const EventPrevew = ({title, date, games, attendees}) => (
+import EventDetails from '../event-details/event-details.component'
+import EventGamePreview from '../event-game-preview/event-game-preview.component'
+///may need to convert to class based component when 
+const EventPrevew = (props) => { 
+    const {title, date, gamesIds, attendees, privateEvent, address} = props
+    return (
+    
     <div className='event-preview'>
-        <h3>{title}</h3>
-            <div className='event-info'>
-                <p><span className='info-header'>Date: </span><span className='info'>{date.date}</span></p>
-                <p><span className='info-header'>Location: </span><span className='info'>{date.time}</span></p>
-            </div>
-            
-                {
-                games.map((game, index)=>(
-                    <div className='game-container' key={index}>
-                        <div className='game-title'>{game.name}</div>
-                        <div className='game-image-container'> 
-                            <img className='game-image' alt='game' src={game.imageUrl} />
-                        </div>
-                    </div>
-                    ))
-                }
-            
+        <EventDetails title={title} date={date} privateEvent={privateEvent} address={address}/>
+        <div className='game-preview-container'>
+            {
+                gamesIds.map((game, index)=>(
+                    <EventGamePreview key={index} name={game.name} imageUrl={game.imageUrl}/>
+                ))
+            }
+        </div>
+         
         
             <div className='attendee-container'>
                 {
@@ -32,7 +28,7 @@ const EventPrevew = ({title, date, games, attendees}) => (
                 }
             </div>
     </div>
-    )
+    )}
 
 
 export default EventPrevew

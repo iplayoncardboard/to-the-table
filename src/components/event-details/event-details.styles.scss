@@ -1,0 +1,19 @@
+.event-details{
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    .event-info{
+        // width: 75%;
+        h3 {
+            font-size: 2rem;
+        }
+        .info-header{
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+    }
+
+    .private-icon{
+        margin: 20px 0;
+    }
+}

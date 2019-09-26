@@ -1,20 +1,15 @@
 import {GuideActionTypes} from './events.types';
+import EVENT_DATA from './mock.data';
 
 const INITIAL_STATE={
-    eventList:[],
+    eventList: EVENT_DATA,
     hidden: true,
     currentEvent: {}
 }
 
 const eventsReducer = (state = INITIAL_STATE, action) => {
     switch (action.type){
-        case GuideActionTypes.SET_EVENTS: 
-            return(
-                {
-                    ...state,
-                    eventList: [...action.payload]
-                }
-            )
+     
         case GuideActionTypes.SET_CURRENT_EVENT:
             return({
                 ...state,
