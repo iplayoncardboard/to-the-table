@@ -28,8 +28,8 @@ render(){
         <h2>Upcomming Events</h2>
         <div className='collection-container'>
         {
-            this.props.events.map(({id, ...otherProps})=>(
-                <EventPreview key={id} {...otherProps}/>))
+            this.props.events.map((props)=>(
+                <EventPreview key={props.id} {...props}/>))
         }
         </div>
     </div>)}
