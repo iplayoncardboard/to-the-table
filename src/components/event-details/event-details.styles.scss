@@ -17,3 +17,11 @@
         margin: 20px 0;
     }
 }
+
+$breakpoint-tablet: 1024px;
+$standard-desktop: 1440px;
+$large-desktop: 2560px;
+
+@media (min-width: $standard-desktop) {
+   
+}

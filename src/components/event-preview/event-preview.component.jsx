@@ -4,7 +4,7 @@ import EventDetails from '../event-details/event-details.component';
 import EventGamePreview from '../event-game-preview/event-game-preview.component';
 import {connect} from 'react-redux'
 // import {createStructuredSelector} from 'reselect';
-import {togglePrivateEvent} from '../../redux/events/events.actions'
+import {togglePrivateEvent} from '../../redux/events/events.actions';
 
 
 ///may need to convert to class based component when 
@@ -19,7 +19,10 @@ const EventPreview = (props) => {
             <div className='game-preview-container'>
                 {
                     gamesIds.map((game, index)=>(
-                        <EventGamePreview key={index} name={game.name} imageUrl={game.imageUrl}/>
+                      
+                            <EventGamePreview key={index} name={game.name} imageUrl={game.imageUrl}/>
+                          
+                        
                     ))
                 }
             </div>
