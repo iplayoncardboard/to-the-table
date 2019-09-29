@@ -9,21 +9,23 @@ import {togglePrivateEvent} from '../../redux/events/events.actions';
 
 ///may need to convert to class based component when 
 const EventPreview = (props) => { 
-    const { title, date, gamesIds, attendees, privateEvent, address, togglePrivate} = props
     
-
-
+    const {id, title, date, games, attendees, privateEvent, address, togglePrivate} = props
+    // console.log(props)
     return (
+
         <div className='event-preview'>
             <EventDetails title={title} date={date} privateEvent={privateEvent} address={address} handleClick={()=> togglePrivate(props)}/>
             <div className='game-preview-container'>
                 {
-                    gamesIds.map((game, index)=>(
+                    
+                    games? games.map((game, index)=>(
                       
-                            <EventGamePreview key={index} name={game.name} imageUrl={game.imageUrl}/>
-                          
+                            <EventGamePreview eventId = {id} key={index} {...game}/>
+
                         
                     ))
+                    : null
                 }
             </div>
             

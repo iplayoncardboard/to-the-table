@@ -1,6 +1,6 @@
 import {GuideActionTypes} from './events.types';
 import EVENT_DATA from './mock.data';
-import { togglePrivateEvent } from './events.utils';
+import { togglePrivateEvent, increaseVoteCount,decreaseVoteCount } from './events.utils';
 
 const INITIAL_STATE={
     eventList: EVENT_DATA,
@@ -25,6 +25,16 @@ const eventsReducer = (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 eventList: togglePrivateEvent(state.eventList, action.payload)
+            })
+        case GuideActionTypes.INCREASE_GAME_VOTE: 
+            return({
+                ...state,
+                eventList: increaseVoteCount(state.eventList, action.payload)
+            })
+            case GuideActionTypes.DECREASE_GAME_VOTE: 
+            return({
+                ...state,
+                eventList: decreaseVoteCount(state.eventList, action.payload)
             })
         default: return state 
     }

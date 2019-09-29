@@ -20,9 +20,10 @@ render(){
         <h2>My Events</h2>
         <div className='collection-container'>
         {
-            events.map((props)=>(
-                <EventPreview key={props.id} {...props}/>))
+            events.map( event=>(
+                <EventPreview key={event.id} {...event}/>))
         }
+
         </div>
 
         <h2>Upcomming Events</h2>

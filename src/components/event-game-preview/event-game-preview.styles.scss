@@ -24,8 +24,14 @@
             }
         }
     }
+    .vote-count{
+        font-size: 2rem;
+        font-weight: bold;
+        margin: auto 10px;
+    }
    .vote-container{
-    .vote-button{
+        
+        .vote-button{
         padding: 3px;
         border: 1px solid grey;
     }
