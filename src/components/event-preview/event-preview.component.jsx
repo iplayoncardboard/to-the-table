@@ -2,6 +2,7 @@ import React from 'react';
 import './event-preview.styles.scss';
 import EventDetails from '../event-details/event-details.component';
 import EventGamePreview from '../event-game-preview/event-game-preview.component';
+import AttendeePreview from '../attendee-preview/attendee-preview.component'
 import {connect} from 'react-redux'
 // import {createStructuredSelector} from 'reselect';
 import {togglePrivateEvent} from '../../redux/events/events.actions';
@@ -20,26 +21,18 @@ const EventPreview = (props) => {
                 {
                     
                     games? games.map((game, index)=>(
-                      
                             <EventGamePreview eventId = {id} key={index} {...game}/>
-
-                        
                     ))
                     : null
                 }
             </div>
-            
-            
-                <div className='attendee-preview-container'>
-                    {
-                        attendees.map((attendee, index)=>(
-                            <div className='attendee' key={index}>
-                                {attendee}
-                            </div>
-                            ))
-                    }
-                </div>
-                
+            <div className='attendee-preview-container'>
+                {
+                    attendees? attendees.map((attendee, index)=>(
+                <AttendeePreview key={index} {...attendee}/>
+                     ))
+                    :null }
+            </div>
         </div>
     )}
 

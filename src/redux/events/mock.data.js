@@ -13,7 +13,26 @@ const EVENT_DATA = {
             state: 'az',
             zip: '85339'
         },
-        attendees:['Jason', 'Cassie'],
+        attendees:[
+            {
+            id:'"Mbx2K9nnIqNHPZTBFI45zRfzB7q1"', 
+            name: 'Erik Hurst',
+            imageUrl: 'https://robohash.org/erik.png?set=set4',
+            votesRemaining: 5}, 
+            {
+            id:'523453425',
+            name: 'Jason',
+            imageUrl: 'https://robohash.org/jason.png?set=set4',
+            votesRemaining: 5}, 
+            {
+            id:'4324563457634',
+            name:'Cassie',
+            imageUrl: 'https://robohash.org/cassie.png?set=set4',
+            votesRemaining: 5},  {
+                id:'d45435435345f', 
+                name: 'Leah Bergner',
+                imageUrl: 'https://robohash.org/leah.png?set=set4',
+                votesRemaining: 5}],
         games: [
             {   
                 id:1,
