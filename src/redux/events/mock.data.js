@@ -1,7 +1,7 @@
 const EVENT_DATA = {
     1: {
         id:1,
-        title:'Awesome Game Night',
+        title:'Awesome Game Nightz',
         privateEvent: true,
         date: {
             date:'10/06/2019',
@@ -15,7 +15,7 @@ const EVENT_DATA = {
         },
         attendees:[
             {
-            id:'"Mbx2K9nnIqNHPZTBFI45zRfzB7q1"', 
+            id:'Mbx2K9nnIqNHPZTBFI45zRfzB7q1', 
             name: 'Erik Hurst',
             imageUrl: 'https://robohash.org/erik.png?set=set4',
             votesRemaining: 5}, 
@@ -114,7 +114,22 @@ const EVENT_DATA = {
             zip: '85222'
         },
         attendees:[],
-        gamesIds: []}
+        gamesIds: []},
+        6:{     id:6,
+            privateEvent: true,
+            title:'Camping Game Night',
+            date: {
+                date:'11/12/2019',
+                time: '7:00 PM'
+            },
+            address: {
+                street: '123 Campsite dr.',
+                city: 'Apache Junction',
+                state: 'az',
+                zip: '85222'
+            },
+            attendees:[],
+            gamesIds: []}
     };
 
 export default EVENT_DATA;

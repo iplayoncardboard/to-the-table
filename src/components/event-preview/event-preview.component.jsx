@@ -4,22 +4,26 @@ import EventDetails from '../event-details/event-details.component';
 import EventGamePreview from '../event-game-preview/event-game-preview.component';
 import AttendeePreview from '../attendee-preview/attendee-preview.component'
 import {connect} from 'react-redux'
-// import {createStructuredSelector} from 'reselect';
 import {togglePrivateEvent} from '../../redux/events/events.actions';
+import {selectCurrentEvent, selectActiveEvent} from '../../redux/events/events.selector';
 
+const EventPreview = (props)=> {  
 
-///may need to convert to class based component when 
-const EventPreview = (props) => { 
-    
-    const {id, title, date, games, attendees, privateEvent, address, togglePrivate} = props
-    // console.log(props)
-    return (
+const { togglePrivate, activeEvent} = props;
+const {id, title, date, games, attendees, privateEvent, address} = props.event;
 
+  
+       return (
         <div className='event-preview'>
-            <EventDetails title={title} date={date} privateEvent={privateEvent} address={address} handleClick={()=> togglePrivate(props)}/>
+            <EventDetails 
+                handleEventClick={()=> activeEvent(id)} 
+                title={title} 
+                date={date} 
+                privateEvent={privateEvent} 
+                address={address} 
+                handlePrivateEyeClick={()=> togglePrivate(activeEvent(id))}/>
             <div className='game-preview-container'>
                 {
-                    
                     games? games.map((game, index)=>(
                             <EventGamePreview eventId = {id} key={index} {...game}/>
                     ))
@@ -36,10 +40,14 @@ const EventPreview = (props) => {
         </div>
     )}
 
+
+    const mapStateToProps = (state, ownProps) => ({
+        currentEvent: selectCurrentEvent(state),
+        activeEvent: eventId => selectActiveEvent(eventId)(state)
+    })
+
     const mapDispatchToProps = dispatch => ({
             togglePrivate: event => dispatch(togglePrivateEvent(event))
     })
 
-export default connect(null, mapDispatchToProps)(EventPreview)
-
-// export default EventPreview
+export default connect(mapStateToProps, mapDispatchToProps)(EventPreview)

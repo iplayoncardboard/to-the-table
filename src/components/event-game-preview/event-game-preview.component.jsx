@@ -2,15 +2,22 @@ import React from 'react';
 import './event-game-preview.styles.scss';
 import VotingButton from '../voting-button/voting-button.component';
 import {connect} from 'react-redux'
-import {voteForGame, voteAgainstGame} from '../../redux/events/events.actions'
+import {voteForGame, voteAgainstGame, incrementUserVote, decrementUserVote } from '../../redux/events/events.actions'
+import {selectActiveEvent} from '../../redux/events/events.selector'
+import {selectCurrentUser} from '../../redux/user/user.selector'
 
 const EventGamePreview = (props) => {
     const voteUp = ()=>{
-        props.voteUpGame(props.eventId, props.id)
+        props.voteUpGame(props.eventId, props.id, props.currentUser.id)
+        props.decrementUserVote(props.activeEvent(props.eventId), props.currentUser.id)
     }
 
     const voteDown = ()=>{
-        props.voteDownGame(props.eventId, props.id)
+
+        // console.log(props.activeEvent(props.eventId), props.currentUser.id)
+        
+        props.voteDownGame(props.eventId, props.id, props.currentUser.id)
+        props.incrementUserVote(props.activeEvent(props.eventId), props.currentUser.id)
     }
 
     const viewGame = ()=> {
@@ -35,9 +42,17 @@ const EventGamePreview = (props) => {
     </div>
 )}
 
-const mapDispatchToProps = dispatch => ({
-    voteUpGame: (eventId, gameId) => dispatch(voteForGame(eventId, gameId)),
-    voteDownGame: (eventId, gameId) => dispatch(voteAgainstGame(eventId, gameId))
+
+const mapStateToProps = (state) => ({
+    activeEvent: eventId => selectActiveEvent(eventId)(state),
+    currentUser: selectCurrentUser(state)
 })
 
-export default connect(null, mapDispatchToProps)(EventGamePreview);
+const mapDispatchToProps = dispatch => ({
+    voteUpGame: (eventId, gameId,userId) => dispatch(voteForGame(eventId, gameId,userId)),
+    voteDownGame: (eventId, gameId, userId) => dispatch(voteAgainstGame(eventId, gameId,userId)),
+    incrementUserVote: (event, userId) => dispatch(incrementUserVote(event, userId)),
+    decrementUserVote: (event,userId) => dispatch(decrementUserVote(event,userId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventGamePreview);

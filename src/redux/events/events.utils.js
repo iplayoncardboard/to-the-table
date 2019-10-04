@@ -13,7 +13,13 @@ export const togglePrivateEvent = (eventList, event) => {
 export const increaseVoteCount = (eventList, eventDetails)=> {
     let targetEvent = eventList[eventDetails.eventId];
 if(targetEvent){
-    if(targetEvent.games && targetEvent.games.length > 0) {
+
+    const remaingVotes = targetEvent.attendees.find(attendee => {
+        return attendee.id === eventDetails.userId
+    }).votesRemaining
+
+    
+    if(targetEvent.games && targetEvent.games.length > 0 && remaingVotes > 0) {
         let updatedGameArray = targetEvent.games.map(game => {
             return game.id === eventDetails.gameId? 
                  {...game, votes:game.votes+1}
@@ -47,4 +53,37 @@ if(targetEvent){
     return (eventList)
 }
 
+export const increaseUserVote = (eventList, eventDetails) => {
+
+    let targetEvent = eventList[eventDetails.event.id];
+    if(targetEvent){
+       let updatedAttendeeArray = targetEvent.attendees.map(attendee =>{
+            if(attendee.id === eventDetails.userId){
+                return {...attendee, votesRemaining: attendee.votesRemaining+1}
+            }
+            return attendee;
+        })
+        targetEvent = {...targetEvent, attendees: updatedAttendeeArray  }
+        return {...eventList, [targetEvent.id]:targetEvent}
+    }
+    
+
+    return eventList;
+}
+
+export const decreaseUserVote = (eventList, eventDetails) => {
+
+    let targetEvent = eventList[eventDetails.event.id]
+    if(targetEvent) {
+        let updatedAttendeeArray = targetEvent.attendees.map(attendee=>{
+            if(attendee.id === eventDetails.userId && attendee.votesRemaining > 0){
+                return {...attendee, votesRemaining: attendee.votesRemaining-1}
+            }
+            return attendee
+        });
+        targetEvent = {...targetEvent, attendees: updatedAttendeeArray  }
+        return {...eventList, [targetEvent.id]:targetEvent}
+    }
+    return eventList
+}
 

@@ -19,4 +19,5 @@ const rootReducer = combineReducers({
     events:eventsReducer
 })
 
-export default persistReducer(persistConfig,rootReducer)
+// export default persistReducer(persistConfig,rootReducer)
+export default rootReducer
