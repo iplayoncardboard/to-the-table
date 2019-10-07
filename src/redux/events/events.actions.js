@@ -21,47 +21,49 @@ export const toggleCreateEventHidden = ()=>{
         });
     }
 
-export const voteForGame = (eventId, gameId, userId) => {
+export const voteForGame = (eventId, gameId, user) => {
     return(
         {
             type: GuideActionTypes.INCREASE_GAME_VOTE,
             payload: {
                 eventId,
                 gameId,
-                userId
+                user
             }
         }
     )
 }
 
-export const voteAgainstGame = (eventId, gameId,userId) => {
+export const voteAgainstGame = (eventId, gameId, user) => {
     return(
         {
             type: GuideActionTypes.DECREASE_GAME_VOTE,
             payload: {
                 eventId,
                 gameId,
-                userId
+                user
             }
         }
     )
 }
 
-export const incrementUserVote = (event, userId) => {
+export const incrementUserVote = (event, gameId, userId) => {
     return( {
-        type: GuideActionTypes.INCREASE_REMAINING_VOTES,
+        type: GuideActionTypes.INCREASE_REMAINING_USER_VOTES,
         payload:{
             userId,
+            gameId,
             event
         }
     })
 }
 
-export const decrementUserVote = (event, userId) => {
+export const decrementUserVote = (event, gameId, userId) => {
     return( {
-        type: GuideActionTypes.DECREASE_REMAINING_VOTES,
+        type: GuideActionTypes.DECREASE_REMAINING_USER_VOTES,
         payload:{
             userId,
+            gameId,
             event
         }
     })

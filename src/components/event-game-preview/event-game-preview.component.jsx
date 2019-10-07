@@ -8,16 +8,13 @@ import {selectCurrentUser} from '../../redux/user/user.selector'
 
 const EventGamePreview = (props) => {
     const voteUp = ()=>{
-        props.voteUpGame(props.eventId, props.id, props.currentUser.id)
-        props.decrementUserVote(props.activeEvent(props.eventId), props.currentUser.id)
+        props.voteUpGame(props.eventId, props.id, props.currentUser)
+        props.decrementUserVote(props.activeEvent(props.eventId), props.id, props.currentUser.id)
     }
 
     const voteDown = ()=>{
-
-        // console.log(props.activeEvent(props.eventId), props.currentUser.id)
-        
-        props.voteDownGame(props.eventId, props.id, props.currentUser.id)
-        props.incrementUserVote(props.activeEvent(props.eventId), props.currentUser.id)
+        props.voteDownGame(props.eventId, props.id, props.currentUser)
+        props.incrementUserVote(props.activeEvent(props.eventId), props.id, props.currentUser.id)
     }
 
     const viewGame = ()=> {
@@ -49,10 +46,10 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    voteUpGame: (eventId, gameId,userId) => dispatch(voteForGame(eventId, gameId,userId)),
-    voteDownGame: (eventId, gameId, userId) => dispatch(voteAgainstGame(eventId, gameId,userId)),
-    incrementUserVote: (event, userId) => dispatch(incrementUserVote(event, userId)),
-    decrementUserVote: (event,userId) => dispatch(decrementUserVote(event,userId))
+    voteUpGame: (eventId, gameId, currentUser) => dispatch(voteForGame(eventId, gameId,currentUser)),
+    voteDownGame: (eventId, gameId, currentUser) => dispatch(voteAgainstGame(eventId, gameId,currentUser)),
+    incrementUserVote: (event, gameId, userId) => dispatch(incrementUserVote(event, gameId, userId)),
+    decrementUserVote: (event,gameId,userId) => dispatch(decrementUserVote(event,gameId,userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventGamePreview);
