@@ -14,7 +14,7 @@ export const togglePrivateEvent = (eventList, event) => {
 //increase vote count and add record of user vote to game's votesCast array
 export const increaseGameVote = (eventList, eventDetails)=> {
     let targetEvent = eventList[eventDetails.eventId];
-if(targetEvent){
+if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.user.id)){
     const remaingVotes = getRemainingVotes(targetEvent.attendees,eventDetails.user.id)
 
     if(targetEvent.games && targetEvent.games.length > 0 && remaingVotes > 0) {
@@ -42,7 +42,7 @@ if(targetEvent){
 
 export const decreaseGameVote = (eventList, eventDetails)=> {
     let targetEvent = eventList[eventDetails.eventId];
-    if(targetEvent){
+    if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.user.id)){
     const remaingVotes = getRemainingVotes(targetEvent.attendees,eventDetails.user.id)
   
     if(targetEvent.games && targetEvent.games.length > 0) {
@@ -67,7 +67,7 @@ export const decreaseGameVote = (eventList, eventDetails)=> {
 export const increaseUserVote = (eventList, eventDetails) => {
 
     let targetEvent = eventList[eventDetails.event.id];
-    if(targetEvent){
+    if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.userId)){
         const remaingVotes = getRemainingVotes(targetEvent.attendees,eventDetails.userId)
         
        let updatedAttendeeArray = targetEvent.attendees.map(attendee =>{
@@ -87,7 +87,7 @@ export const increaseUserVote = (eventList, eventDetails) => {
 
 export const decreaseUserVote = (eventList, eventDetails) => {
     let targetEvent = eventList[eventDetails.event.id]
-    if(targetEvent) {
+    if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.userId)) {
         let updatedAttendeeArray = targetEvent.attendees.map(attendee=>{
             if(userCanRedcueVote(attendee, eventDetails)){
                 const votedForGame = userVotesCastContainsGame(attendee.votesCast, eventDetails.gameId)
@@ -121,3 +121,5 @@ const userCanRedcueVote = (attendee, eventDetails) =>
     : false;
 
 const userVotesCastContainsGame = (arrayOfUserVotes, gameId) => arrayOfUserVotes.find(vote => vote.gameId === gameId && vote.votes > 0)
+
+const userIsAttendee = (arrayOfAttendees, userId) => arrayOfAttendees.some(attendee =>  attendee.id === userId)
