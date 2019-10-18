@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { ReactComponent as Logo } from  '../../assets/logo-plain.svg';
 
+import CreateEventButton from '../create-event-button/create-event-button.component'
+
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from '../../redux/user/user.selector'
@@ -18,9 +20,16 @@ const Header = ({currentUser, hidden}) => (
         </Link>
         <div className='nav-container'>
             {
+           
+            }
+            {
                 currentUser ? 
-                <div className='header-sign-in' onClick={() => auth.signOut()}>SIGN OUT</div> :
-                <Link className='header-sign-in' to='/signIn'>SIGN IN</Link> 
+                <div className= 'button-container'>
+                    <Link className='header-button' to='/NewEvent'>NEW EVENT</Link> 
+                    <div className='header-button' onClick={() => auth.signOut()}>SIGN OUT</div>
+                </div> 
+                : <Link className='header-button' to='/signIn'>SIGN IN</Link>
+               
             }
             
             <div className='user-menu'>

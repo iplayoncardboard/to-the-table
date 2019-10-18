@@ -25,19 +25,11 @@ $secondary-color: #f1e040;
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        .header-sign-in {
-            padding: 10px 15px;
-            border: 1px solid $primary-color;
-            background-color: $primary-color;
-            color: white;
-            top: 0px;
-            
-            &:hover{
-                background-color: $secondary-color;
-                color: $primary-color;
-                font-weight: 500;
-                
-            }
+        .button-container{
+            display: flex;
+            flex-direction: row;
+
+           
         }
 
         .user-menu{
@@ -48,6 +40,22 @@ $secondary-color: #f1e040;
             .user-icon{
                 cursor: pointer;
             }
+        }
+    }
+
+    .header-button {
+        padding: 10px 15px;
+        border: 1px solid $primary-color;
+        background-color: $primary-color;
+        color: white;
+        top: 0px;
+        margin: 5px;
+        
+        &:hover{
+            background-color: $secondary-color;
+            color: $primary-color;
+            font-weight: 500;
+            
         }
     }
 }

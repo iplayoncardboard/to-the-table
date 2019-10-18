@@ -8,12 +8,12 @@ import {selectCurrentUser} from '../../redux/user/user.selector'
 
 const EventGamePreview = (props) => {
     const voteUp = ()=>{
-        props.voteUpGame(props.eventId, props.id, props.currentUser)
+        props.voteForGame(props.eventId, props.id, props.currentUser)
         props.decrementUserVote(props.activeEvent(props.eventId), props.id, props.currentUser.id)
     }
 
     const voteDown = ()=>{
-        props.voteDownGame(props.eventId, props.id, props.currentUser)
+        props.voteAgainstGame(props.eventId, props.id, props.currentUser)
         props.incrementUserVote(props.activeEvent(props.eventId), props.id, props.currentUser.id)
     }
 
@@ -33,8 +33,8 @@ const EventGamePreview = (props) => {
         <div className='vote-count'>{props.votes}</div>
         <div className='vote-container'>
             
-                <VotingButton className='vote-button' iconType='thumbUp' size='3' backgroundColor='' iconColor='rgb(63, 191, 63)' handleClick={voteUp}/>
-                <VotingButton className='vote-button' iconType='thumbDown' size='3'  backgroundColor='' iconColor='red' handleClick={voteDown}/>
+                <VotingButton className='vote-button' iconType='plus' size='3' backgroundColor='rgb(245,246,247)' iconColor='black' handleClick={voteUp}/>
+                <VotingButton className='vote-button' iconType='minus' size='3'  backgroundColor='rgb(245,246,247)' iconColor='black' handleClick={voteDown}/>
         </div>
     </div>
 )}
@@ -46,8 +46,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    voteUpGame: (eventId, gameId, currentUser) => dispatch(voteForGame(eventId, gameId,currentUser)),
-    voteDownGame: (eventId, gameId, currentUser) => dispatch(voteAgainstGame(eventId, gameId,currentUser)),
+    voteForGame: (eventId, gameId, currentUser) => dispatch(voteForGame(eventId, gameId,currentUser)),
+    voteAgainstGame: (eventId, gameId, currentUser) => dispatch(voteAgainstGame(eventId, gameId,currentUser)),
     incrementUserVote: (event, gameId, userId) => dispatch(incrementUserVote(event, gameId, userId)),
     decrementUserVote: (event,gameId,userId) => dispatch(decrementUserVote(event,gameId,userId))
 })

@@ -34,8 +34,8 @@ const EVENT_DATA = {
             imageUrl: 'https://robohash.org/cassie.png?set=set4',
             votesRemaining: 5,
             votesCast: []},  {
-                id:'d45435435345f', 
-                name: 'Leah Bergner',
+                id:'xWuuLEY8OkNsl3Ie1jhmhlW3GhO2', 
+                name: 'Cardboard Guru',
                 imageUrl: 'https://robohash.org/leah.png?set=set4',
                 votesRemaining: 5,
                 votesCast: []}],
