@@ -39,6 +39,4 @@ const mapStateToProps = createStructuredSelector({
     events: selectAllEvents
 })
 
-
-
 export default connect(mapStateToProps)(UserLanding)

@@ -61,3 +61,12 @@ export const decrementUserVote = (event, gameId, userId) => {
         }
     })
 }
+
+export const setActiveEvent = eventId => {
+    return(
+        {
+            type: GuideActionTypes.SET_ACTIVE_EVENT_ID,
+            payload: eventId
+        }
+    )
+} 

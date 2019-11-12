@@ -5,6 +5,7 @@ import { togglePrivateEvent, increaseGameVote, decreaseGameVote, increaseUserVot
 const INITIAL_STATE={
     eventList: EVENT_DATA,
     hidden: true,
+    activeEvent: 0
 
 }
 
@@ -41,6 +42,11 @@ const eventsReducer = (state = INITIAL_STATE, action) => {
                         ...state,
                         eventList: decreaseUserVote(state.eventList, action.payload)
                     })
+            case GuideActionTypes.SET_ACTIVE_EVENT_ID:
+                return({
+                    ...state,
+                    activeEvent: action.payload
+                })
         default: return state 
     }
 }

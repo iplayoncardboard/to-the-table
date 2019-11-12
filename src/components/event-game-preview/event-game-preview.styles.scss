@@ -12,11 +12,13 @@
             font-size: 2rem;
             font-weight: bold;
             margin: auto 10px auto 0;
-            min-width: 50%;
+            // min-width: 50%;
+            flex: 1;
             overflow: hidden;
             text-overflow:ellipsis;
         }
         .game-image-container{
+            flex: 1;
             height: 80px;
             margin: auto 0;
             .game-image{
@@ -30,9 +32,11 @@
         font-weight: bold;
         margin: auto 10px;
         width:25%;
+        flex: .5 1 auto;
+        text-align: center;
     }
    .vote-container{
-        
+        flex: 1;
         .vote-button{
         padding: 3px;
         border: 1px solid grey;

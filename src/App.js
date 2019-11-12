@@ -13,7 +13,7 @@ import {setCurrentUser} from './redux/user/user.actions';
 import {selectCurrentUser} from './redux/user/user.selector'
 import {selectEventHidden} from './redux/events/events.selector';
 import { createStructuredSelector } from 'reselect'
-import {searchGameAsync} from './bgg-api/bgg'
+import bggService from './services/index'
 class App extends React.Component {
     constructor(props){
       super(props)
@@ -38,7 +38,7 @@ class App extends React.Component {
         }
     });
 
-    searchGameAsync('catan');
+    bggService.searchGameAsync('catan');
   }
 
   componentWillUnmount(){
@@ -50,12 +50,13 @@ class App extends React.Component {
         <Header currentUser={this.props.currenUser}></Header>
         <Switch>
           <Route exact path='/' render={()=> this.props.currentUser ? (<Redirect to={{
-            pathname:`/${this.props.currentUser.id}/landing`
+            pathname:`/${this.props.currentUser.id}/events`
           }} />):(<HomePage />)} />
           <Route exact path='/signIn' render={() => this.props.currentUser ? (<Redirect to='/' />): (<SignInAndSignUp/>)} />
           
           <Route exact path='/NewEvent' component={Event} />
-          <Route exact path={`/:user/landing`} render={()=> this.props.currentUser ? (<UserLanding />):(<HomePage />)} />
+          <Route exact path={`/:user/events`} render={()=> this.props.currentUser ? (<UserLanding />):(<HomePage />)} />
+          <Route path={`/:user/events/:id`} render={() => this.props.currentUser? (<Event />) : (<HomePage />)} />
         </Switch>
       </div>
     );

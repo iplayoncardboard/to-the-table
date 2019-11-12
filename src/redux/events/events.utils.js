@@ -13,17 +13,21 @@ export const togglePrivateEvent = (eventList, event) => {
 
 //increase vote count and add record of user vote to game's votesCast array
 export const increaseGameVote = (eventList, eventDetails)=> {
+    //find target event from list by eventDetails id
     let targetEvent = eventList[eventDetails.eventId];
+    //Check if event exists and user is part of the event
 if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.user.id)){
     const remaingVotes = getRemainingVotes(targetEvent.attendees,eventDetails.user.id)
-
+    //check if games array is poulated and the user has votes left to use. 
     if(targetEvent.games && targetEvent.games.length > 0 && remaingVotes > 0) {
+        //cycle through event game array if game id in event details matches a game in the array...
         let updatedGameArray = targetEvent.games.map(game => {
            if(game.id === eventDetails.gameId){
-
+            //look for no votes cast for the game or no votes casy by the user and cast first vote
                 if(game.votesCast.length === 0 || !gameVotesCastContainsUser(game.votesCast, eventDetails.user.id)){
                     return {...game, votes:game.votes+1, votesCast:[{userId: eventDetails.user.id, votes: 1}]}
                 } 
+            // or look for votes cast by the user and incriement them y 1. 
                    let newVotesArray = game.votesCast.map( vote => vote.userId === eventDetails.user.id ? {...vote, votes:vote.votes +1} : vote)
                     return {...game, votes:game.votes+1, votesCast:newVotesArray}
                 
@@ -39,7 +43,7 @@ if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.user.id)){
 }
 
 
-
+//see above
 export const decreaseGameVote = (eventList, eventDetails)=> {
     let targetEvent = eventList[eventDetails.eventId];
     if(targetEvent && userIsAttendee(targetEvent.attendees, eventDetails.user.id)){

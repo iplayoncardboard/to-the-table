@@ -10,10 +10,11 @@ import CreateEventButton from '../create-event-button/create-event-button.compon
 import {connect} from 'react-redux'
 import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from '../../redux/user/user.selector'
+import { setActiveEvent } from '../../redux/events/events.actions'
 
 import {auth} from '../../firebase/firebase.utils'
 
-const Header = ({currentUser, hidden}) => (
+const Header = ({currentUser, hidden, setActiveAsActiveEvent}) => (
     <div className='header'>
          <Link to='/' className='logo-container'>
             <Logo className='logo' />
@@ -25,7 +26,7 @@ const Header = ({currentUser, hidden}) => (
             {
                 currentUser ? 
                 <div className= 'button-container'>
-                    <Link className='header-button' to='/NewEvent'>NEW EVENT</Link> 
+                    <Link onClick={()=>setActiveAsActiveEvent(0)}className='header-button' to='/NewEvent'>NEW EVENT</Link> 
                     <div className='header-button' onClick={() => auth.signOut()}>SIGN OUT</div>
                 </div> 
                 : <Link className='header-button' to='/signIn'>SIGN IN</Link>
@@ -43,4 +44,8 @@ const mapStateToProps = createStructuredSelector({
     currentUser:selectCurrentUser
 })
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = dispatch => ({
+    setActiveAsActiveEvent: eventId => dispatch(setActiveEvent(eventId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

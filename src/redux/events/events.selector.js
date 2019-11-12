@@ -6,11 +6,6 @@ const selectEvents = state => state.events;
     [selectEvents],
     event => event.eventList)
 
-export const selectCurrentEvent = createSelector(
-    [selectEvents],
-    event => event.currentEvent
-)
-
 export const selectAllEvents =  createSelector(
     [selectEventList],
     events => Object.keys(events).map(key=> events[key])
@@ -24,4 +19,9 @@ export const selectEventHidden = createSelector(
 export const selectActiveEvent = eventId => createSelector(
     [selectEventList],
     events => events[eventId] 
+)
+
+export const selectActiveEventId = createSelector(
+    [selectEvents],
+    events => events.activeEvent
 )
