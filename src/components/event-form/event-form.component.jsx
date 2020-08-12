@@ -28,11 +28,9 @@ class EventForm extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props)
         let {curtentEventId, currentEventDetails} = this.props;
         if(curtentEventId !== 0){
           let currentEvent = currentEventDetails(curtentEventId)
-          console.log("CATS", currentEvent)
           this.setState({
             id: currentEvent.id,  
             name: currentEvent.title,
@@ -97,9 +95,7 @@ class EventForm extends React.Component{
     
 }
 
-
 const mapStateToProps = (state) => ({
-
     curtentEventId: selectActiveEventId(state),
     currentEventDetails: eventId => selectActiveEvent(eventId)(state)
 })

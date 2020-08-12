@@ -1,4 +1,5 @@
 import convert from 'xml-js'
+import 'babel-polyfill';
 
 
 
