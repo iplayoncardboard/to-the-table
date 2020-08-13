@@ -63,7 +63,7 @@ class EventForm extends React.Component{
         this.props.history.push('/')
     }
 
-    eventSave= ()=> {
+    eventSave = ()=> {
         this.props.toggleCreateEventHidden();
     }
 
@@ -92,7 +92,6 @@ class EventForm extends React.Component{
         </div>
     )
    } 
-    
 }
 
 const mapStateToProps = (state) => ({
