@@ -6,17 +6,17 @@ import 'babel-polyfill';
 const newAPIBaseURL = 'https://www.boardgamegeek.com/xmlapi2';
 const oldAPIBaseURL = 'https://www.boardgamegeek.com/xmlapi';
 
-export const searchGameAsync = async (searchTerm, exact=true) => {
+export const searchGameAsync = async (searchTerm, isExact=true) => {
     let response;
-    let isExact = 1
+    let exact = isExact ? 1 : 0;
     try {
-    response = await fetch(`${newAPIBaseURL}/search?query=${searchTerm.toLowerCase()}&type=boardgame&exact=${isExact}`)
+    response = await fetch(`${newAPIBaseURL}/search?query=${searchTerm.toLowerCase()}&type=boardgame&exact=${exact}`)
     } catch(e) {
         console.error(e);
     }
     
     let xml = await new Response(response.body).text();
-    return convert.xml2js(xml, {compact: true})
+    return convert.xml2js(xml, {compact: true});
 }
 
 export const fetchUserCollectionAsync = async(userName) => {
@@ -29,3 +29,5 @@ export const fetchUserCollectionAsync = async(userName) => {
     let xml = await new Response(response.body).text();
     return convert.xml2js(xml, {compact: true})
 }
+
+

@@ -21,9 +21,6 @@ const Header = ({currentUser, hidden, setActiveAsActiveEvent}) => (
         </Link>
         <div className='nav-container'>
             {
-           
-            }
-            {
                 currentUser ? 
                 <div className= 'button-container'>
                     <Link onClick={()=>setActiveAsActiveEvent(0)}className='header-button' to='/NewEvent'>NEW EVENT</Link> 
