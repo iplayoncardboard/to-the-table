@@ -38,8 +38,13 @@ class App extends React.Component {
           setCurrentUser(userAuth)
         }
     });
+   bggService.searchGameAsync('catan').then(resp =>{
+      console.log(resp);
+   });
 
-    bggService.searchGameAsync('catan');
+   bggService.fetchUserCollectionAsync('Xer0Cool').then(resp => {
+    console.log(resp)
+  });
   }
 
   componentWillUnmount(){
