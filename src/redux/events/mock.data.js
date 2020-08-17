@@ -1,6 +1,10 @@
 const EVENT_DATA = {
     1: {
         id:1,
+        creator: {
+            userName: '',
+            email: ''
+        },
         title:'Awesome Game Nightz',
         privateEvent: true,
         baseVotes: 5,

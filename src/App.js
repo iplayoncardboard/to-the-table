@@ -8,13 +8,15 @@ import UserLanding from './pages/user-landing/user-landing.component';
 import Event from './pages/event/event.comonent'
 import {Route, Switch, Redirect} from 'react-router-dom'
 
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import {connect} from 'react-redux';
-import {setCurrentUser} from './redux/user/user.actions';
-import {selectCurrentUser} from './redux/user/user.selector'
-import {selectEventHidden} from './redux/events/events.selector';
+import { auth, createUserProfileDocument, getUserByEmail, getEventsByUserEmail, createEvent } from './firebase/firebase.utils';
+import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selector'
+import { selectEventHidden } from './redux/events/events.selector';
 import { createStructuredSelector } from 'reselect'
 import bggService from './services/index'
+
+
 class App extends React.Component {
     constructor(props){
       super(props)
@@ -38,13 +40,19 @@ class App extends React.Component {
           setCurrentUser(userAuth)
         }
     });
-   bggService.searchGameAsync('catan').then(resp =>{
-      console.log(resp);
-   });
+  //  bggService.searchGameAsync('catan').then(resp =>{
+  //     console.log(resp);
+  //  });
 
-   bggService.fetchUserCollectionAsync('Xer0Cool').then(resp => {
-    console.log(resp)
-  });
+  //  bggService.fetchUserCollectionAsync('Xer0Cool').then(resp => {
+  //   console.log(resp)
+
+  // });
+
+  // getUserByEmail('ehurst01@gmail.com').then(user => console.log(user));
+  // getEventsByUserEmail('ehurst01@gmail.com').then(event => console.log(event));
+
+
   }
 
   componentWillUnmount(){
@@ -59,7 +67,6 @@ class App extends React.Component {
             pathname:`/${this.props.currentUser.id}/events`
           }} />):(<HomePage />)} />
           <Route exact path='/signIn' render={() => this.props.currentUser ? (<Redirect to='/' />): (<SignInAndSignUp/>)} />
-          
           <Route exact path='/NewEvent' component={Event} />
           <Route exact path={`/:user/events`} render={()=> this.props.currentUser ? (<UserLanding />):(<HomePage />)} />
           <Route path={`/:user/events/:id`} render={() => this.props.currentUser? (<Event />) : (<HomePage />)} />

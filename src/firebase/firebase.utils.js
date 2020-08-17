@@ -13,8 +13,8 @@ const config = {
     appId: "1:932030831173:web:0e8493e22bbda3a4b8612c"
 }
 firebase.initializeApp(config);
-export const auth = firebase.auth()
-export const firestore = firebase.firestore()
+export const auth = firebase.auth();
+export const firestore = firebase.firestore();
 
 
 //google Oauth config
@@ -51,6 +51,39 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
     //return user referrence
     return userRef;
 }
+
+export const createEvent = async (eventData) => {
+    console.log(eventData)
+   try{
+       console.log('trying')
+        const res = await firestore.collection(`events`).add(eventData);
+        console.log('Added document with ID: ', res.id);
+        return true;
+  
+   } catch(e){
+       console.error('error creating Event' + e.message)
+       return false;
+   }
+    }
+
+    export const getUserByEmail = async (userEmail) => {
+        const userRef = firestore.collection(`users`);
+        const queryRef = await userRef.where('email', '==', userEmail).get();
+        console.log(queryRef)
+        // queryRef.docs.forEach(doc => {
+        //  console.log(doc.id);
+        //  console.log(doc.data());
+        // });
+
+        return queryRef.docs[0].data();
+        }
+
+    export const getEventsByUserEmail = async (userEmail) => {
+        const eventRef = firestore.collection('events');
+        const queryRef = await eventRef.where('creator.email', '==', userEmail).get()
+
+        return queryRef.docs[0].data();
+    }
 
 
 export default firebase;

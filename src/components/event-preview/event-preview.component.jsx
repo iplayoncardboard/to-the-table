@@ -32,21 +32,6 @@ const {id, title, date, games, attendees, privateEvent, address} = this.props.ev
                 address={address} 
                 handlePrivateEyeClick={()=> togglePrivate(activeEvent(id))}
                 />
-            <div className='game-preview-container'>
-                {
-                    games? games.map((game, index)=>(
-                        <EventGamePreview eventId = {id} key={index} showVoting={true} {...game}/>
-                    ))
-                    : null
-                }
-            </div>
-            <div className='attendee-preview-container'>
-                {
-                    attendees? attendees.map((attendee, index)=>(
-                <AttendeePreview key={index} {...attendee}/>
-                     ))
-                    :null }
-            </div>
         </div>
         )}
     }
