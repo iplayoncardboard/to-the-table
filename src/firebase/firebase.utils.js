@@ -55,16 +55,26 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 export const createEvent = async (eventData) => {
     console.log(eventData)
    try{
-       console.log('trying')
         const res = await firestore.collection(`events`).add(eventData);
         console.log('Added document with ID: ', res.id);
-        return true;
+        return res;
   
    } catch(e){
        console.error('error creating Event' + e.message)
-       return false;
+       return null;
    }
+}
+
+export const updateEvent = async (eventData) => {
+    let eventRef = firestore.collection('events').doc(eventData.id);
+    try{
+        await eventRef.update({id:eventData.id});
+        console.log(eventData);
+    }catch(e){
+        console.error('error creating Event' + e.message)
+        return null;
     }
+}
 
     export const getUserByEmail = async (userEmail) => {
         const userRef = firestore.collection(`users`);

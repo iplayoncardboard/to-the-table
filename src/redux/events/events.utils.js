@@ -1,5 +1,9 @@
 import {} from './events.selector'
 
+export const addEvent = (eventList, eventData) => {
+    return {...eventList, 0: eventData}
+}
+
 export const togglePrivateEvent = (eventList, event) => {
     let targetEvent = eventList[event.id];
     

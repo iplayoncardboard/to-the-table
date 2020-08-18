@@ -1,23 +1,29 @@
-import {GuideActionTypes} from './events.types'
+import {EventActionTypes} from './events.types';
 
+export const createEvent = eventDetails => {
+    return({
+        type: EventActionTypes.CREATE_EVENT,
+        payload: eventDetails
+    });
+}
 
 export const togglePrivateEvent = event => {
     return({
-        type: GuideActionTypes.TOGGLE_PRIVATE_EVENT,
+        type: EventActionTypes.TOGGLE_PRIVATE_EVENT,
         payload: event
     })
 }
 
 export const toggleCreateEventHidden = ()=>{
         return (
-            {type: GuideActionTypes.TOGGLE_CREATE_EVENT_HIDDEN
+            {type: EventActionTypes.TOGGLE_CREATE_EVENT_HIDDEN
         });
     }
 
 export const voteForGame = (eventId, gameId, user) => {
     return(
         {
-            type: GuideActionTypes.INCREASE_GAME_VOTE,
+            type: EventActionTypes.INCREASE_GAME_VOTE,
             payload: {
                 eventId,
                 gameId,
@@ -30,7 +36,7 @@ export const voteForGame = (eventId, gameId, user) => {
 export const voteAgainstGame = (eventId, gameId, user) => {
     return(
         {
-            type: GuideActionTypes.DECREASE_GAME_VOTE,
+            type: EventActionTypes.DECREASE_GAME_VOTE,
             payload: {
                 eventId,
                 gameId,
@@ -42,7 +48,7 @@ export const voteAgainstGame = (eventId, gameId, user) => {
 
 export const incrementUserVote = (event, gameId, userId) => {
     return( {
-        type: GuideActionTypes.INCREASE_REMAINING_USER_VOTES,
+        type: EventActionTypes.INCREASE_REMAINING_USER_VOTES,
         payload:{
             userId,
             gameId,
@@ -53,7 +59,7 @@ export const incrementUserVote = (event, gameId, userId) => {
 
 export const decrementUserVote = (event, gameId, userId) => {
     return( {
-        type: GuideActionTypes.DECREASE_REMAINING_USER_VOTES,
+        type: EventActionTypes.DECREASE_REMAINING_USER_VOTES,
         payload:{
             userId,
             gameId,
@@ -65,7 +71,7 @@ export const decrementUserVote = (event, gameId, userId) => {
 export const setActiveEvent = eventId => {
     return(
         {
-            type: GuideActionTypes.SET_ACTIVE_EVENT_ID,
+            type: EventActionTypes.SET_ACTIVE_EVENT_ID,
             payload: eventId
         }
     )
