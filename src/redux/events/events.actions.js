@@ -1,10 +1,18 @@
-import {EventActionTypes} from './events.types';
+import { EventActionTypes } from './events.types';
+import { getEventsByUserEmail } from '../../firebase/firebase.utils'
 
 export const createEvent = eventDetails => {
     return({
         type: EventActionTypes.CREATE_EVENT,
         payload: eventDetails
     });
+}
+
+export const updateEvent = eventDetails => {
+    return({
+        type: EventActionTypes.UPDATE_EVENT,
+        payload: eventDetails
+    })
 }
 
 export const togglePrivateEvent = event => {
@@ -76,3 +84,21 @@ export const setActiveEvent = eventId => {
         }
     )
 } 
+
+export const loadEventList = eventList => {
+    return(
+        {
+            type: EventActionTypes.LOAD_EVENT_LIST,
+            payload: eventList
+        }
+    )
+} 
+
+export const getAllUserEvents = userEmail => {
+    return (dispatch) => {
+        return getEventsByUserEmail(userEmail).then(
+            eventList => dispatch(loadEventList(eventList)),
+            err => console.error('error loading event list')
+        )
+    }
+}

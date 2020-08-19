@@ -13,6 +13,7 @@ export const createNewEvent = (eventDetails) =>{
         console.log('sending udpate event')
         fbUpdate(newEvent)});
     //update record with new id
+    //NEEDS TO UPDATE EVENT IN STORE
     
 
 

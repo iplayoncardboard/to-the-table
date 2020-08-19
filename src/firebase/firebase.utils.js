@@ -89,10 +89,16 @@ export const updateEvent = async (eventData) => {
         }
 
     export const getEventsByUserEmail = async (userEmail) => {
+        console.log('service called')
+        let eventList = {}
         const eventRef = firestore.collection('events');
-        const queryRef = await eventRef.where('creator.email', '==', userEmail).get()
-
-        return queryRef.docs[0].data();
+        const queryRef = await eventRef.where('creator', '==', userEmail).get()
+        queryRef.docs.forEach(doc => {
+         eventList[doc.id] = doc.data()
+        });
+       console.log('Service Events');
+       console.log(eventList);
+        return eventList;
     }
 
 

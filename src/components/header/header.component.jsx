@@ -12,10 +12,9 @@ import {createStructuredSelector} from 'reselect';
 import {selectCurrentUser} from '../../redux/user/user.selector'
 import { setActiveEvent } from '../../redux/events/events.actions'
 
-import { auth, createEvent } from '../../firebase/firebase.utils'
+import { auth, getEventsByUserEmail } from '../../firebase/firebase.utils'
 
-import EVENT_DATA from '../../redux/events/mock.data';
-let event = EVENT_DATA[1];
+
 const Header = ({currentUser, hidden, setActiveAsActiveEvent}) => (
     
     <div className='header'>
@@ -36,7 +35,7 @@ const Header = ({currentUser, hidden, setActiveAsActiveEvent}) => (
             <div className='user-menu'>
                 <FontAwesomeIcon className='user-icon'  icon={faUser} size='2x' />
             </div>
-            <div onClick={()=> createEvent(event)}>
+            <div onClick={()=> getEventsByUserEmail(currentUser.email)}>
                 test
             </div>
         </div>

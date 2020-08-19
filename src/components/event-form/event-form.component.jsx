@@ -33,10 +33,8 @@ class EventForm extends React.Component{
 
     componentDidMount(){
         let {curtentEventId, currentEventDetails, currentUser} = this.props;
-        console.log('FORM')
-        console.log(currentUser)
         
-        this.setState((state,props)=>({creator: props.currentUser ? props.currentUser.email : ''}));
+        this.setState((state,props)=>({creator: currentUser ? currentUser.email : ''}));
         
         if(curtentEventId !== 0){
           let currentEvent = currentEventDetails(curtentEventId)
