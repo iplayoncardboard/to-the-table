@@ -1,24 +1,10 @@
-import { createEvent } from '../redux/events/events.actions';
+import { createEvent,  updateNewEvent as rxUpdateNewEvent} from '../redux/events/events.actions';
 import { store } from '../redux/store'
-import { createEvent as fbCreate, updateEvent as fbUpdate} from '../firebase/firebase.utils'
+import { createEvent as fbCreate, updateNewEvent as fbUpdate} from '../firebase/firebase.utils'
 
-export const createNewEvent = (eventDetails) =>{
-    // handle event data
-    console.log('Event Service Create Event');
-    console.log(eventDetails)
-    // dispatch event creation actions
+export const createNewEvent = (eventDetails) => {
     store.dispatch(createEvent(eventDetails));
-    // add event to firestore db.
     fbCreate(eventDetails).then(newEvent => {
-        console.log('sending udpate event')
-        fbUpdate(newEvent)});
-    //update record with new id
-    //NEEDS TO UPDATE EVENT IN STORE
-    
-
-
-}
-
-export const updateEvent = (eventDetails) => {
-
+        fbUpdate(newEvent).then(id => store.dispatch(rxUpdateNewEvent(id)))
+        });
 }

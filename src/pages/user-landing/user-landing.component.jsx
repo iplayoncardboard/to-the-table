@@ -4,7 +4,7 @@ import {createStructuredSelector} from 'reselect'
 import './user-landing.styles.scss'
 
 import { selectCurrentUser } from '../../redux/user/user.selector';
-import {selectAllEvents, selectEventList} from '../../redux/events/events.selector'
+import {selectAllEvents} from '../../redux/events/events.selector'
 import { getAllUserEvents } from '../../redux/events/events.actions'
 import EventPreview from '../../components/event-preview/event-preview.component';
 
@@ -18,8 +18,6 @@ const UserLanding = (props)=> {
         console.log(events && currentUser)
         if(events.length === 0) {
             getAllUserEvents(currentUser.email);
-            console.log('component events');
-            console.log(events);
         }
     })
     

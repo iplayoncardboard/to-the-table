@@ -7,7 +7,7 @@ import {withRouter} from 'react-router-dom';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 import EventGamePreview from '../event-game-preview/event-game-preview.component';
-import {createNewEvent} from '../../services/eventService'
+import { createNewEvent } from '../../services/eventService'
 class EventForm extends React.Component{ 
 
     constructor(props){

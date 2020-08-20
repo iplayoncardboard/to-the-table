@@ -65,11 +65,11 @@ export const createEvent = async (eventData) => {
    }
 }
 
-export const updateEvent = async (eventData) => {
-    let eventRef = firestore.collection('events').doc(eventData.id);
+export const updateNewEvent = async (eventData) => {
     try{
-        await eventRef.update({id:eventData.id});
-        console.log(eventData);
+     let res = await firestore.doc(`events/${eventData.id}`).update({id:eventData.id});
+      return eventData.id;
+  
     }catch(e){
         console.error('error creating Event' + e.message)
         return null;

@@ -8,9 +8,9 @@ export const createEvent = eventDetails => {
     });
 }
 
-export const updateEvent = eventDetails => {
+export const updateNewEvent = eventDetails => {
     return({
-        type: EventActionTypes.UPDATE_EVENT,
+        type: EventActionTypes.UPDATE_NEW_EVENT,
         payload: eventDetails
     })
 }
@@ -91,7 +91,7 @@ export const loadEventList = eventList => {
             type: EventActionTypes.LOAD_EVENT_LIST,
             payload: eventList
         }
-    )
+    );
 } 
 
 export const getAllUserEvents = userEmail => {
@@ -99,6 +99,6 @@ export const getAllUserEvents = userEmail => {
         return getEventsByUserEmail(userEmail).then(
             eventList => dispatch(loadEventList(eventList)),
             err => console.error('error loading event list')
-        )
+        );
     }
 }

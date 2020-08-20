@@ -4,6 +4,13 @@ export const addEvent = (eventList, eventData) => {
     return {...eventList, 0: eventData}
 }
 
+export const updateNewEvent = (eventList, eventData) => {
+    eventList[eventData] = eventList[0];
+    delete eventList[0];
+    eventList[eventData].id = eventData;
+    return {...eventList}
+}
+
 export const togglePrivateEvent = (eventList, event) => {
     let targetEvent = eventList[event.id];
     

@@ -1,6 +1,6 @@
 import {EventActionTypes} from './events.types';
 import EVENT_DATA from './mock.data';
-import {addEvent, togglePrivateEvent, increaseGameVote, decreaseGameVote, increaseUserVote, decreaseUserVote } from './events.utils';
+import {addEvent, updateNewEvent, togglePrivateEvent, increaseGameVote, decreaseGameVote, increaseUserVote, decreaseUserVote } from './events.utils';
 
 const INITIAL_STATE={
     eventList: {},
@@ -17,11 +17,11 @@ const eventsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 eventList: addEvent(state.eventList, action.payload)}
             );
-        case EventActionTypes.UPDATE_EVENT:
+        case EventActionTypes.UPDATE_NEW_EVENT:
             return({
                 ...state,
                 //this needs to be updated
-                // eventList: addEvent(state.eventList, action.payload)
+                eventList: updateNewEvent(state.eventList, action.payload)
             }
             );
 
@@ -31,11 +31,13 @@ const eventsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 eventList: action.payload
             });
+
         case EventActionTypes.TOGGLE_CREATE_EVENT_HIDDEN:
                 return({
                     ...state,
                     hidden: !state.hidden
             });
+            
         case EventActionTypes.TOGGLE_PRIVATE_EVENT:
             return ({
                 ...state,
